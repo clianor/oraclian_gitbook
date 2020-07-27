@@ -1,4 +1,12 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [TIL](README.md)
+
+## python
+
+* [Untitled](python/untitled.md)
+
+## javascript
+
+* [Untitled](javascript/untitled.md)
 
