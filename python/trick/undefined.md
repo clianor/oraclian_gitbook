@@ -28,12 +28,12 @@ if not all((x,y,z)):
 또한 파이썬에서는 and와 or를 이용해서 삼항 연산자를 사용한 방법도 있습니다.
 
 ```python
-x = 0
+a, b = 1, 2
 
-print(x == 0 and 0 or 1)
-# result: 0
+print(a == b and a or b)
+# result: 2
 
-print(x == 1 and 0 or 1)
+print(a != b and a or b)
 # result: 1
 ```
 
