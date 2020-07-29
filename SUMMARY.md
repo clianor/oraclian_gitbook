@@ -18,5 +18,3 @@
 
 * [Untitled](javascript/untitled.md)
 
-## tick
-
