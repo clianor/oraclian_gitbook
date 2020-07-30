@@ -23,8 +23,9 @@
 * [Network](cs/network/README.md)
   * [OSI 7계층](cs/network/osi-7.md)
 
-## WEB
+## INTERVIEW
 
-* [브라우저의 동작 방식](web/browser.md)
-* [HTTP 상태 코드](web/http-status-code.md)
+* [WEB](interview/web/README.md)
+  * [브라우저의 동작 방식](interview/web/browser.md)
+  * [HTTP 상태 코드](interview/web/http-status-code.md)
 
