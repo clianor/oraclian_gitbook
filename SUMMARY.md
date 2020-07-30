@@ -23,3 +23,7 @@
 * [Network](cs/network/README.md)
   * [OSI 7계층](cs/network/osi-7.md)
 
+## WEB
+
+* [브라우저의 동작 방식](web/browser.md)
+
