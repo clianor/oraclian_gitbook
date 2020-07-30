@@ -26,4 +26,5 @@
 ## WEB
 
 * [브라우저의 동작 방식](web/browser.md)
+* [HTTP 상태 코드](web/http-status-code.md)
 
