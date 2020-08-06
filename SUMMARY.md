@@ -8,6 +8,7 @@
   * [Dictionary 병합](python/trick/dictionary.md)
   * [한 번에 여러 플래그를 테스트하는 방법](python/trick/undefined.md)
   * [Dictionary를 정렬하는 방법](python/trick/dictionary-1.md)
+  * [namedtuple를 이용한 클래스 대안](python/trick/namedtuple.md)
 
 ---
 
