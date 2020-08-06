@@ -15,6 +15,9 @@
 
 * [ETC](etc/README.md)
   * [11 Best Freelance Python Developers for Hire](etc/11-best-freelance-python-developers-for-hire.md)
+* [Django](django/README.md)
+  * [Base](django/base/README.md)
+    * [Static 파일 설정](django/base/staticfiles.md)
 
 ## javascript
 
