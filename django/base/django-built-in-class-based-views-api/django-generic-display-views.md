@@ -106,5 +106,7 @@ urlpatterns = [
 **\* 메소드 \*  
 get \(request,** _**args, \***_**kwargs\)**  
 - 컨텍스트에 object\_list를 추가합니다.  
-- allow\_empty가 True일때 빈 목록을 표시하고 allow\_empty가 False라면 404 에러를 발생시킵니다.
+- allow\_empty가 True일때 빈 목록을 표시하고 allow\_empty가 False라면 404 에러를 발생시킵니다.  
+  
+ListView를 활용하여 페이지네이션을 구현한 예제 블로그를 보고싶다면 [클릭!](https://wayhome25.github.io/django/2017/05/02/CBV/)
 
