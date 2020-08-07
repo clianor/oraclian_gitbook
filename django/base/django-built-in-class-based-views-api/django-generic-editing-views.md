@@ -1,0 +1,2 @@
+# Django - Generic editing views
+
