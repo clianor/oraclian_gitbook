@@ -18,7 +18,6 @@
 * [Django](django/README.md)
   * [Base](django/base/README.md)
     * [Static 파일 설정](django/base/staticfiles.md)
-    * [Untitled](django/base/untitled.md)
     * [Django - Built-in class-based views API](django/base/django-built-in-class-based-views-api/README.md)
       * [Django - Base views](django/base/django-built-in-class-based-views-api/django-base-views.md)
       * [Django - Generic display views](django/base/django-built-in-class-based-views-api/django-generic-display-views.md)
