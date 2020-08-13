@@ -79,8 +79,90 @@ Form은 Generic Editing Views에서 전반적으로 사용할 수 있습니다.
 `{% for field in form %}  
 {{ field.errors }}  
 {{ field.label_tag }} : {{ field }}  
-{% endfor %}`  
+{% endfor %}`
 
+### 2. CreateView
+
+특정한 객체의 저장과 관련된 뷰로써 데이터의 유효성 검사 수행과 유효하지 않은 데이터일 경우 다시 그 뷰를 보여주고 오류를 표현해주기 위한 뷰입니다.  
+이 뷰는 아래의 내용을 상속받습니다.  
+`django.views.generic.detail.SingleObjectTemplateResponseMixin   
+django.views.generic.base.TemplateResponseMixin  
+django.views.generic.edit.BaseCreateView   
+django.views.generic.edit.ModelFormMixin   
+django.views.generic.edit.FormMixin   
+django.views.generic.detail.SingleObjectMixin   
+django.views.generic.edit.ProcessFormView   
+django.views.generic.base.View`  
+  
+**\* 속성 \***  
+**template\_name\_suffix**  
+CreateView에서 초기화된 Model\_template\_name\_suffix.html와 같은 방식으로 template의 이름을 설정합니다.  
+기본 값은 \_form 입니다.  
+\(template\_name와 template\_name\_suffix 중에서 선택하여 사용하면 됩니다\)  
+  
+**object**  
+객체가 생성된 경우 self.object로 접근이 가능하고 아직 생성되지 않은 경우에는 self.object는 None이 됩니다.  
+그런데 form으로 유효성 검사를 하고나면 바로 save를 할텐데 CreateView에서 object에 접근할일이 어떤 상황이며 어떤때 접근하는지는 모르겠습니다.  
+\(객체를 생성하는 단계에서 self.object 속성을 제공한다는게 잘 이해되지 않네요\)
+
+```python
+# views.py
+from django.views.generic.edit import CreateView
+from myapp.models import Author
+
+class AuthorCreate(CreateView):
+    model = Author
+    fields = ['name']
+    
+# author_form.html
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+```
+
+FormView에서와 같이 form과 관련된 템플릿 기능을 사용할 수 있습니다.
+
+### 3. UpdateView
+
+CreateView와 유사하지만 특징은 특정 객체의 생성이 아닌 기존 내용을 편집하기 위한 뷰입니다.  
+이 뷰는 아래의 내용을 상속받습니다.  
+`django.views.generic.detail.SingleObjectTemplateResponseMixin   
+django.views.generic.base.TemplateResponseMixin  
+django.views.generic.edit.BaseUpdateView   
+django.views.generic.edit.ModelFormMixin   
+django.views.generic.edit.FormMixin   
+django.views.generic.detail.SingleObjectMixin   
+django.views.generic.edit.ProcessFormView   
+django.views.generic.base.View`
+
+**\* 속성 \***  
+**template\_name\_suffix**  
+CreateView의 template\_name\_suffix와 동일하며 기본값이 \_update\_form입니다.  
+  
+**object**  
+수정하려고 하는 객체에 대해 self.object로 접근할 수 있습니다.
+
+```python
+# views.py
+from django.views.generic.edit import UpdateView
+from myapp.models import Author
+
+class AuthorUpdate(UpdateView):
+    model = Author
+    fields = ['name']
+    template_name_suffix = '_update_form'
+    
+# author_update_form.html
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update">
+</form>
+```
+
+FormView에서와 같이 form과 관련된 템플릿 기능을 사용할 수 있습니다.
 
 
 
