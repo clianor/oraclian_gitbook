@@ -21,6 +21,7 @@
       * [Django - Base views](python/django/base/django-built-in-class-based-views-api/django-base-views.md)
       * [Django - Generic display views](python/django/base/django-built-in-class-based-views-api/django-generic-display-views.md)
       * [Django - Generic editing views](python/django/base/django-built-in-class-based-views-api/django-generic-editing-views.md)
+  * [Query Expressions](python/django/query-expressions.md)
 
 ## javascript
 
