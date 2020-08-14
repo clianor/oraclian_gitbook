@@ -11,6 +11,7 @@
   * [namedtuple를 이용한 클래스 대안](python/trick/namedtuple.md)
   * [json.dumps를 활용하여 Python dict를 이쁘게 출력하는 방법](python/trick/json.dumps-python-dict.md)
   * [Python에서 함수의 인자를 unpacking 하는 방법](python/trick/python-unpacking.md)
+  * [Timeit 모듈을 이용한 코드 실행시간 측정](python/trick/timeit.md)
 
 ---
 
