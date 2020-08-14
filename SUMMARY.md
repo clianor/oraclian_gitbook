@@ -12,18 +12,15 @@
   * [json.dumps를 활용하여 Python dict를 이쁘게 출력하는 방법](python/trick/json.dumps-python-dict.md)
   * [Python에서 함수의 인자를 unpacking 하는 방법](python/trick/python-unpacking.md)
   * [timeit 모듈을 이용한 코드 실행시간 측정](python/trick/timeit.md)
-
----
-
-* [ETC](etc/README.md)
-  * [11 Best Freelance Python Developers for Hire](etc/11-best-freelance-python-developers-for-hire.md)
-* [Django](django/README.md)
-  * [Base](django/base/README.md)
-    * [Static 파일 설정](django/base/staticfiles.md)
-    * [Django - Built-in class-based views API](django/base/django-built-in-class-based-views-api/README.md)
-      * [Django - Base views](django/base/django-built-in-class-based-views-api/django-base-views.md)
-      * [Django - Generic display views](django/base/django-built-in-class-based-views-api/django-generic-display-views.md)
-      * [Django - Generic editing views](django/base/django-built-in-class-based-views-api/django-generic-editing-views.md)
+* [ETC](python/etc/README.md)
+  * [11 Best Freelance Python Developers for Hire](python/etc/11-best-freelance-python-developers-for-hire.md)
+* [Django](python/django/README.md)
+  * [Base](python/django/base/README.md)
+    * [Static 파일 설정](python/django/base/staticfiles.md)
+    * [Django - Built-in class-based views API](python/django/base/django-built-in-class-based-views-api/README.md)
+      * [Django - Base views](python/django/base/django-built-in-class-based-views-api/django-base-views.md)
+      * [Django - Generic display views](python/django/base/django-built-in-class-based-views-api/django-generic-display-views.md)
+      * [Django - Generic editing views](python/django/base/django-built-in-class-based-views-api/django-generic-editing-views.md)
 
 ## javascript
 
