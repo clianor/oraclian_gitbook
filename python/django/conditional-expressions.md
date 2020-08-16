@@ -68,3 +68,40 @@ When(Exists(non_unique_account_type), then=Value('non unique'))
 위의 표현식은 유니크한지 안한지 여부를 판단하는 When입니다.  
 아직도 OuterRef에 대해서 익숙치 않아 정확히 어떻게 동작하는지는 잘 모르겠네요 더 찾아보고 설명을 수정하겠습니다.
 
+#### 2. Case
+
+Case는 위에서 설명한 When과 함께 사용되며 Case가 하나 또는 복수의 When을 인자로 받아 처리됩니다.
+
+```python
+from datetime import date, timedelta
+from django.db.models import Case, CharField, When
+
+Client.objects.create(
+    name='Jane Doe',
+    account_type=Client.REGULAR,
+    registered_on=date.today() - timedelta(days=36))
+    
+Client.objects.create(
+    name='James Smith',
+    account_type=Client.GOLD,
+    registered_on=date.today() - timedelta(days=5))
+    
+Client.objects.create(
+    name='Jack Black',
+    account_type=Client.PLATINUM,
+    registered_on=date.today() - timedelta(days=10 * 365))
+    
+Client.objects.annotate(
+    discount=Case(
+        When(account_type=Client.GOLD, then=Value('5%')),
+        When(account_type=Client.PLATINUM, then=Value('10%')),
+        default=Value('0%'),
+        output_field=CharField(),
+    ),
+).values_list('name', 'discount')
+# <QuerySet [('Jane Doe', '0%'), ('James Smith', '5%'), ('Jack Black', '10%')]>
+```
+
+위의 코드는 Client의 account\_type에 따라서 할인률을 Case와 When을 가지고 보여주는 코드입니다.  
+만약 등급이 GOLD 일 경우에는 5%, PLATINUM 일때는 10%의 할인을 해주고 둘 다 아닌 경우에는 할인을 해주지 않으며 이 출력값은 문자열로 discount라는 필드로 생성하는 코드입니다.
+
