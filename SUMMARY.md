@@ -12,8 +12,6 @@
   * [json.dumps를 활용하여 Python dict를 이쁘게 출력하는 방법](python/trick/json.dumps-python-dict.md)
   * [Python에서 함수의 인자를 unpacking 하는 방법](python/trick/python-unpacking.md)
   * [timeit 모듈을 이용한 코드 실행시간 측정](python/trick/timeit.md)
-* [ETC](python/etc/README.md)
-  * [11 Best Freelance Python Developers for Hire](python/etc/11-best-freelance-python-developers-for-hire.md)
 * [Django](python/django/README.md)
   * [Base](python/django/base/README.md)
     * [Static 파일 설정](python/django/base/staticfiles.md)
@@ -23,6 +21,11 @@
       * [Django - Generic editing views](python/django/base/django-built-in-class-based-views-api/django-generic-editing-views.md)
   * [Query Expressions](python/django/query-expressions/README.md)
     * [F\(\) expressions](python/django/query-expressions/f-expressions.md)
+    * [Func\(\) Expressions](python/django/query-expressions/func-expressions.md)
+    * [Aggregate\(\) expressions](python/django/query-expressions/aggregate-expressions.md)
+  * [Conditional Expressions](python/django/conditional-expressions.md)
+* [ETC](python/etc/README.md)
+  * [11 Best Freelance Python Developers for Hire](python/etc/11-best-freelance-python-developers-for-hire.md)
 
 ## javascript
 
