@@ -51,3 +51,35 @@ WHERE "comments"."id" IN (
 )
 ```
 
+  
+서브쿼리와 함께 여러 함수들도 같이 사용할 수 있으며 EXITS와 같은 함수를 사용하여 표현할 수 있습니다.
+
+```sql
+from django.db.models import Exists, OuterRef
+from datetime import timedelta
+from django.utils import timezone
+
+one_day_ago = timezone.now() - timedelta(days=1)
+recent_comments = Comment.objects.filter(
+    post=OuterRef('pk'),
+    created_at__gte=one_day_ago,
+)
+Post.objects.annotate(recent_comment=Exists(recent_comments))
+```
+
+위의 코드는 아래의 sql로 표현됩니다.
+
+```sql
+SELECT "post"."id", "post"."published_at", EXISTS(
+    SELECT U0."id", U0."post_id", U0."email", U0."created_at"
+    FROM "comment" U0
+    WHERE (
+        U0."created_at" >= YYYY-MM-DD HH:MM:SS AND
+        U0."post_id" = ("post"."id")
+    )
+) AS "recent_comment" FROM "post"
+```
+
+위의 코드와 쿼리가 의미하는 것은 각 게시물에 하루 전날 이후로 작성된 댓글이 있는지 확인하는 쿼리입니다.  
+위의 쿼리에서 YYYY-MM-DD 와 같이 datetime string format은 one\_day\_ago 변수의 값이 들어가는 부분을 장고 문서에서는 저렇게 표현할 것 같습니다.
+
