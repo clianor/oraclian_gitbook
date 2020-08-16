@@ -81,5 +81,5 @@ SELECT "post"."id", "post"."published_at", EXISTS(
 ```
 
 위의 코드와 쿼리가 의미하는 것은 각 게시물에 하루 전날 이후로 작성된 댓글이 있는지 확인하는 쿼리입니다.  
-위의 쿼리에서 YYYY-MM-DD 와 같이 datetime string format은 one\_day\_ago 변수의 값이 들어가는 부분을 장고 문서에서는 저렇게 표현할 것 같습니다.
+위의 쿼리에서 YYYY-MM-DD 와 같이 datetime string format은 one\_day\_ago 변수의 값이 들어가는 부분을 장고 문서에서는 저렇게 표현한 것 같습니다.
 
