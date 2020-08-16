@@ -23,6 +23,7 @@
     * [F\(\) expressions](python/django/query-expressions/f-expressions.md)
     * [Func\(\) Expressions](python/django/query-expressions/func-expressions.md)
     * [Aggregate\(\) expressions](python/django/query-expressions/aggregate-expressions.md)
+    * [Subquery\(\) Expressions](python/django/query-expressions/subquery-expressions.md)
   * [Conditional Expressions](python/django/conditional-expressions.md)
 * [ETC](python/etc/README.md)
   * [11 Best Freelance Python Developers for Hire](python/etc/11-best-freelance-python-developers-for-hire.md)
