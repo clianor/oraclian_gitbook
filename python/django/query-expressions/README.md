@@ -3,7 +3,7 @@
 장고에는 많은 쿼리 표현식이 있습니다.  
 먼저 공식 문서에 있는 장고의 쿼리표현식의 예제를 가져와 조금씩 설명을 해보겠습니다.
 
-#### 1 . 의자의 수보다 직원의 수가 더 많은 회사 찾
+#### 1 . 의자의 수보다 직원의 수가 더 많은 회사 찾기.
 
 ```python
 from django.db.models import F
@@ -13,7 +13,7 @@ Company.objects.filter(num_employees__gt=F('num_chairs'))
 
 여기서 나오는 \_\_gt는 오른쪽에 보다 크다는 의미로서 F\(\) 표현식 이용하여 테이블의 레코드 중에서 의자의 수보다 직원의 수가 많은이라는 의미를 가지게하고 filter를 통해 sql의 where문과 동일한 기능을 수행하게 합니다.
 
-#### 2. 직원 수가 의자보다 두 배 이상 많은 회사 찾
+#### 2. 직원 수가 의자보다 두 배 이상 많은 회사 찾기.
 
 ```python
 from django.db.models import F
@@ -27,7 +27,7 @@ Company.objects.filter(num_employees__gt=F('num_chairs') + F('num_chairs'))
 이 두 쿼리셋은 동일한 내용을 보여주는 쿼리셋입니다.  
 1번에서 설명한 \_\_gt와 같은 조건 키워드를 이용하였으며 직원의 수가 의자의 수보다 두 배가 많아야 하므로 하나의 레코드에서 num\_employees &gt; num\_chairs \* 2또는 num\_employees &gt; num\_chairs + num\_chairs와 동일한 결과를 반환하고자 위와 같이 작성된 쿼리셋입니다.
 
-#### 3. 모든 직원을 앉히기 위해 필요한 의자의 갯수 구하
+#### 3. 모든 직원을 앉히기 위해 필요한 의자의 갯수 구하기.
 
 ```python
 from django.db.models import F
@@ -70,7 +70,7 @@ company.ticker
 그리고 Upper 함수를 이용하여 'goog' 스트링을 'GOOG'로 변환하여 저장을 하게 됩니다.  
 create 함수를 사용해서 객체를 받아온다고해서 디비의 내용을 바로 가져올 수 있는것은 아닌데 캐싱되어 있는 데이터가 아닌 디비의 데이터를 가져오기 위해선 refresh\_from\_db 메소드를 이용하여 모델 객체를 다시 디비로부터 읽어옵니다.
 
-#### 5. 회사의 제품의 갯수를 구하
+#### 5. 회사의 제품의 갯수를 구하기.
 
 ```python
 from django.db.models import Count, F
@@ -83,7 +83,7 @@ Company.objects.annotate(num_products=Count(F('products')))
 지금까지의 응용입니다.  
 이번에 토스의 과제를 치루면서 가운트를 세야했던 일이 있었는데 그때 이렇게 사용하면 더 좋았을텐데 라는 생각이 드네요.
 
-#### 6. 집계에는 복잡한 표현식도 들어갈 수 있
+#### 6. 집계에는 복잡한 표현식도 들어갈 수 있다.
 
 ```python
 from django.db.models import Count, F
@@ -94,7 +94,7 @@ Company.objects.annotate(num_offerings=Count(F('products') + F('services')))
 이 부분은 정확히 어떻게 동작하는지 몰라 확인하고 다시 써야할거 같네요.  
 우선은 회사의 제품들과 서비스들의 갯수의 합을 구하는 것 같습니다.
 
-#### 7. order\_by에서도 표현식을 직접 사용할 수 있
+#### 7. order\_by에서도 표현식을 직접 사용할 수 있다.
 
 ```python
 from django.db.models import Count, F, Value
@@ -106,7 +106,7 @@ Company.objects.order_by(Length('name').desc())
 
 회사의 이름의 길이에 따라 오름차순 또는 내림차순 하는 예제입니다.
 
-#### 8. order\_by에서 더블 언더스코어를 활용하여 조회할 수 있
+#### 8. order\_by에서 더블 언더스코어를 활용하여 조회할 수 있다.
 
 ```python
 from django.db.models import CharField
