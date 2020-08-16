@@ -51,7 +51,7 @@ company.chairs_needed
 위의 쿼리셋에서는 먼저 코드에서는 의자의 수보다 직원의 수가 많은 회사를 찾고, 그러한 회사들 중에서 chairs\_needed라는 새로운 필드를 추가합니다.  
 이 새로 추가된 chairs\_needed라는 필드는 직원수 - 의자수의 값을 가지게 됩니다.
 
-#### 4. 표현식을 사용하여 회사 생성하기
+#### 4. 표현식을 사용하여 회사 생성하기.
 
 ```python
 from django.db.models import F
@@ -120,7 +120,7 @@ register\_lookup은 처음보는 기능이였습니다.
 이 기능은 기존에 장고에서 지원하지 않는 더블 언더스코어를 확장해서 쓸 수 있는 기능입니다.  
 위의 표현식은 7번과 동일합니다.
 
-#### 9. Boolean 표현식은 필터에서 바로 사용할 수 있
+#### 9. Boolean 표현식은 필터에서 바로 사용할 수 있다.
 
 ```python
 from django.db.models import Exists
