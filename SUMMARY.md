@@ -27,6 +27,8 @@
   * [Conditional Expressions](python/django/conditional-expressions.md)
 * [ETC](python/etc/README.md)
   * [11 Best Freelance Python Developers for Hire](python/etc/11-best-freelance-python-developers-for-hire.md)
+  * [Python 기초](python/etc/python/README.md)
+    * [Generator](python/etc/python/generator.md)
 
 ## javascript
 
