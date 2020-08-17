@@ -29,6 +29,7 @@
   * [11 Best Freelance Python Developers for Hire](python/etc/11-best-freelance-python-developers-for-hire.md)
   * [Python 기초](python/etc/python/README.md)
     * [Generator](python/etc/python/generator.md)
+    * [Duck Typing](python/etc/python/duck-typing.md)
 
 ## javascript
 
