@@ -34,7 +34,8 @@
 ## javascript
 
 * [React](javascript/react/README.md)
-  * [Hook](javascript/react/hook.md)
+  * [Hook](javascript/react/hook/README.md)
+    * [useState](javascript/react/hook/usestate.md)
 * [NextJS](javascript/nextjs/README.md)
   * [NextJS - 기본구조](javascript/nextjs/nextjs.md)
 
