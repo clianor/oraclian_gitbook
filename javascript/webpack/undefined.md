@@ -4,7 +4,7 @@ description: >-
   참고
 ---
 
-# 기초
+# webpack tutorial
 
 ## 웹팩이란?
 
