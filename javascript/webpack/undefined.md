@@ -1,6 +1,12 @@
+---
+description: >-
+  https://velog.io/@hih0327/Webpack-%EA%B8%B0%EC%B4%88#9-webpack%EC%97%90%EC%84%9C-css-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+  참고
+---
+
 # 기초
 
-## 웹이란?
+## 웹팩이란?
 
 먼저 웹팩은 웹팩의 공식 사이트에서 아래와 같이 정의하고 있습니다.
 
@@ -259,4 +265,570 @@ export default App;
 #### 6. 빌드
 
 `npm run build` 로 빌드를 하고 dist 폴더의 index.html 파일을 열어 라이브 서버로 실행해보면 Hello, React가 출력되는 모습을 볼 수 있습니다.
+
+### 9. CSS 사용하기
+
+#### 1. src/App.css 파일 추
+
+```css
+.title {
+    color: #2196f3;
+    font-size: 52px;
+    text-align: center;
+}
+```
+
+#### 2. src/App.jsx 파일 수정
+
+```javascript
+import React from 'react';
+import './App.css';
+
+const App = () => {
+  return (
+    <h3 className="title">Hello, React</h3>
+  );
+};
+
+export default App;
+
+```
+
+#### 3. webpack.config.js 수정
+
+```javascript
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname + "/dist")
+  },
+  mode: "none",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules",
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['css-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    })
+  ]
+}
+```
+
+css-loader를 추가하여 웹팩이 css를 이해할 수 있게 하였습니다.
+
+하지만 여기까지 작업을하면 build를 하여도 css가 저장이 되지 않습니다.  
+[여기](https://webpack.js.org/plugins/mini-css-extract-plugin/)를 참조하여 mini-css-extract-plugin을 추가합니다.
+
+```javascript
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname + "/dist")
+  },
+  mode: "none",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules",
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    })
+  ]
+}
+```
+
+### 10. SCSS 사용하기
+
+#### 1. src/App.css 파일을 src/App.scss로 변경한다.
+
+#### 2. src/App.scss 파일을 다음과 같이 수정한다.
+
+```css
+$fontColor: #2196f3;
+$fontSize: 52px;
+
+
+.title {
+    color: $fontColor;
+    font-size: $fontSize;
+    text-align: center;
+}
+```
+
+#### 3. src/App.jsx 파일을 다음과 같이 수정한다.
+
+```javascript
+import React from 'react';
+import './App.scss';
+
+const App = () => {
+  return (
+    <h3 className="title">Hello, React</h3>
+  );
+};
+
+export default App;
+```
+
+#### 4. webpack.config.js 수정
+
+```javascript
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname + "/dist")
+  },
+  mode: "none",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules",
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    })
+  ]
+}
+```
+
+sass-loader를 추가하여 웹팩이 scss를 이해할 수 있게 하였습니다.
+
+### 11. webpack-dev-server적용
+
+개발 할때는 매번 빌드해서 확인할 수 없으므로 개발 서버를 이용하여 코드 수정시 웹팩이 자동으로 빌드하고 반영해주는 webpack-dev-server를 적용합니다.
+
+#### 1. webpack.config.js 수정
+
+[여기](https://webpack.js.org/configuration/dev-server/)를 참고하여 작업합니다.
+
+```javascript
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname + "/dist")
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  },
+  mode: "none",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules",
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    })
+  ]
+}
+```
+
+#### 2. package.json 수정
+
+```javascript
+"scripts": {
+  "build": "webpack",
+  "dev": "webpack-dev-server --hot"
+},
+```
+
+ 위와 같이 작성하고 `npm run dev` 로 실행을하면 이제 파일을 매번 빌드하지 않아도 파일이 수정되면 바로 브라우저에서 확인할 수 있습니다.
+
+### 12. clean-webpack-plugin 적용
+
+clean-webpack-plugin 은 빌드될 때 사용되지 않는 파일들을 삭제해주는 플러그인입니다.
+
+#### 1. webpack.config.js 수정
+
+[여기](https://webpack.js.org/guides/output-management/#cleaning-up-the-dist-folder)를 참고하여 작업합니다.
+
+```javascript
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname + "/dist")
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  },
+  mode: "none",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules",
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    }),
+    new CleanWebpackPlugin()
+  ]
+}
+```
+
+### 13. 웹팩 모드 나누기
+
+위에서 웹팩의 주요 속성중에 Mode가 있다고 이야기를 했었습니다.  
+웹팩의 빌드 모드 중에 Production과 Development가 있는데 특징은 아래와 같습니다.
+
+1. Production - 빌드할때 최적화 작업을 한다.
+2. Development - 빠르게 빌드하기 위해 최적화 작업을 하지 않는다.
+
+#### 1. config 폴더를 만들어 내부에 webpack.config.dev.js와 webpack.config.prod.js 파일을 작
+
+```javascript
+// webpack.config.dev.js
+
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    filename: "index.js",
+    path: path.resolve(__dirname, "../dist")
+  },
+  devServer: {
+    contentBase: path.join(__dirname, '../dist'),
+    compress: true,
+    port: 9000
+  },
+  mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules",
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    }),
+    new CleanWebpackPlugin()
+  ]
+}
+```
+
+```javascript
+// webpack.config.prod.js
+
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+  entry: "./src/index.jsx",
+  output: {
+    filename: "bundle.[contenthash].js",
+    path: path.resolve(__dirname, "../dist")
+  },
+  mode: "production",
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: "/node_modules",
+        use: {
+          loader: "babel-loader",
+        }
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
+        options: {
+          minimize: true,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    }),
+    new CleanWebpackPlugin()
+  ]
+}
+```
+
+#### 2. 기존의 webpack.config.js 파일 삭제
+
+#### 3. package.json 파일 수정
+
+```javascript
+"scripts": {
+  "build": "webpack --config ./config/webpack.config.prod.js",
+  "dev": "webpack-dev-server --config ./config/webpack.config.dev.js --hot"
+},
+```
+
+이제 `npm run build`와 `npm run dev`를 할때 기존과는 조금 다른 결과들을 볼 수 있습니다.
+
+가장 큰 차이점으로는 개발 모드로 실행했을 경우에는 dist 폴더가 생기지 않는다는 점입니다.
+
+그 이유는 개발 모드로 실행했을시 빌드된 결과를 메모리에 적재시킨뒤 읽어오기 때문이며 그렇게해서 개발 할때 빌드하고 읽어오는 속도를 올리기 위함입니다.
+
+개발 모드가 아니라 운영 모드로 빌드시에는 기존의 index.js파일이 생겨나는 것이 아니라 해시를 이용하여 알아보기 힘든 파일 명으로 생성이 됩니다.
+
+### 14. 이미지 사용하기
+
+여기까지 작업하면 이제 리액트의 개발환경이 셋팅되었다고 할 수 있지만 아직 문제가 있습니다.
+
+지금 상태에서는 이미지를 처리할 수 없다는 점입니다.
+
+이를 처리하기 위해서 file-loader를 이용하겠습니다.
+
+[여기](https://webpack.js.org/loaders/file-loader/)를 참고하시면됩니다.
+
+#### 1. file-loader 라이브러리 다운로
+
+```javascript
+npm i -D file-loader
+```
+
+#### 2. webpack.config.dev.js와 webpack.config.prod.js의 rules 아래의 내용 추가
+
+```javascript
+{
+  test: /\.(png|jpe?g|gif)$/i,
+  loader: 'file-loader',
+  options: {
+    name: '[path][name].[ext]',
+  },
+},
+```
+
+#### 3. src/assets 폴더를 만들고 img.jpg 파일을 하나 추가
+
+#### 4. src/App.jsx 파일 수정
+
+```javascript
+import React from 'react';
+import './App.scss';
+import Image from './assets/img.jpg';
+
+const App = () => {
+  return (
+    <>
+      <h3 className="title">Hello, React</h3>
+      <img src={Image} />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+#### 5. 이제 빌드 또는 개발모드로 실행
+
+이제 이미지가 보이는 것을 볼 수 있습니다.
 
