@@ -39,7 +39,7 @@
     * [useEffect](javascript/react/hook/useeffect.md)
     * [useReducer](javascript/react/hook/usereducer.md)
 * [Webpack](javascript/webpack/README.md)
-  * [webpack tutorial](javascript/webpack/undefined.md)
+  * [webpack tutorial](javascript/webpack/webpack-tutorial.md)
 * [NextJS](javascript/nextjs/README.md)
   * [NextJS - 기본구조](javascript/nextjs/nextjs.md)
 
