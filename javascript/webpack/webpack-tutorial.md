@@ -788,7 +788,7 @@ module.exports = {
 
 [여기](https://webpack.js.org/loaders/file-loader/)를 참고하시면됩니다.
 
-#### 1. file-loader 라이브러리 다운로
+#### 1. file-loader 라이브러리 다운로드
 
 ```javascript
 npm i -D file-loader
@@ -831,4 +831,118 @@ export default App;
 #### 5. 이제 빌드 또는 개발모드로 실행
 
 이제 이미지가 보이는 것을 볼 수 있습니다.
+
+### 15. 타입스크립트 사용하기
+
+타입스크립트는 MS에서 개발하고 관리하는 자바스크립트의 상위집합인 언어입니다.
+
+자바스크립트가 동적 타입 언어이기 때문에 타입의 안정성이 보장되지 않는다는 점 때문에 그러한 단점을 보완하고자 나온것이 타입스크립트입니다.
+
+웹팩이 타입스크립트를 이해하게 하기 위해서는 먼저 [여기](https://webpack.js.org/guides/typescript/)를 참고하시면됩니다.
+
+#### 1. 타입스크립트 컴파일러와 로더 다운로드
+
+```bash
+npm i -D typescript ts-loader
+```
+
+#### 2. tsconfig.json 생성
+
+```javascript
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./node_modules/**/*"
+  ]
+}
+```
+
+위의 내용을 복사 붙여넣기 하시거나 npx tsconfig.json으로 생성하셔도 됩니다.
+
+#### 3. webpack.config.dev.js과 webpack.config.prod.js 수정
+
+```javascript
+// rules에 아래의 내용 추가
+{
+  test: /\.(ts|tsx)?$/,
+  use: 'ts-loader',
+  exclude: /node_modules/,
+},
+
+// resolve를 아래와 같이 수정
+resolve: {
+  extensions: ['.ts', '.tsx', '.js', '.jsx']
+},
+```
+
+resolve를 추가해줌으로써 ts와 tsx도 이해할 수 있게 되었습니다.
+
+#### 4. 타입스크립트 관련 라이브러리 다운로드
+
+```javascript
+npm install -D @types/react @types/react-dom
+```
+
+#### 5. App.jsx와 index.jsx를 App.tsx와 index.tsx로 변경
+
+#### 6. typing.d.ts 파일을 작성
+
+```javascript
+declare module '*.jpg' {
+  import * as React from 'react';
+
+  export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+
+  const src: string;
+  export default src;
+}
+```
+
+#### 7. index.tsx 파일 수정
+
+```javascript
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("root"));
+```
+
+#### 8. App.tsx 파일 수정
+
+```javascript
+import * as React from 'react';
+import './App.scss';
+import Image from './assets/img.jpg';
+
+const App = () => {
+  return (
+    <>
+      <h3 className="title">Hello, React</h3>
+      <img src={Image} />
+    </>
+  );
+};
+
+export default App;
+
+```
+
+#### 5. 이제 빌드 또는 개발모드로 실행
+
+정상 실행되는 모습을 볼 수 있습니다.
+
+## 지금까지의 코드
+
+지금까지 작성된 코드는 [여기](https://github.com/clianor/webpack_tutorial)에 있습니다.
 
