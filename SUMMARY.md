@@ -30,6 +30,7 @@
   * [Python 기초](python/etc/python/README.md)
     * [Generator](python/etc/python/generator.md)
     * [Duck Typing](python/etc/python/duck-typing.md)
+  * [크로스 브라우징이란?](python/etc/undefined.md)
 
 ## javascript
 
