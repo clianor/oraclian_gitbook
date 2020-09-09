@@ -30,7 +30,6 @@
   * [Python 기초](python/etc/python/README.md)
     * [Generator](python/etc/python/generator.md)
     * [Duck Typing](python/etc/python/duck-typing.md)
-  * [크로스 브라우징이란?](python/etc/undefined.md)
 
 ## javascript
 
@@ -56,6 +55,7 @@
   * [HTTP 상태 코드](interview/web/http-status-code.md)
   * [쿠키와 세션](interview/web/cookie-and-session.md)
   * [JWT \(Json Web Token\)](interview/web/jwt-json-web-token.md)
+  * [크로스 브라우징이란?](interview/web/undefined.md)
 * [Algorithm](interview/algorithm/README.md)
   * [빅오 표기법](interview/algorithm/big-o.md)
 
