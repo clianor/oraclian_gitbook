@@ -57,6 +57,6 @@
   * [JWT \(Json Web Token\)](interview/web/jwt-json-web-token.md)
   * [크로스 브라우징이란?](interview/web/undefined.md)
   * [SOAP와 REST](interview/web/soap-rest.md)
-* [Algorithm](interview/algorithm/README.md)
-  * [빅오 표기법](interview/algorithm/big-o.md)
+* [기타](interview/etc/README.md)
+  * [빅오 표기법](interview/etc/big-o.md)
 
