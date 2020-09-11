@@ -8,5 +8,75 @@
 
 ![&#xCD9C;&#xCC98;: https://terms.naver.com/entry.nhn?docId=2270428&amp;cid=51173&amp;categoryId=51173](../../.gitbook/assets/image%20%287%29.png)
 
+트리를 javascript로 구현하면 아래와 같이 구현할 수 있습니다.  
+다음은 이진트리입니다.
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class Tree {
+  constructor(data) {
+    if (data) {
+      this.root = new Node(data);
+    } else {
+      this.root = null;
+    }
+  }
+
+  add(data) {
+    const node = new Node(data);
+
+    if (this.root === null) {
+      this.root = node;
+      return;
+    }
+
+    if (node.data < this.root.data) {
+      this.root.left = this._insert(this.root.left, node);
+    } else {
+      this.root.right = this._insert(this.root.right, node);
+    }
+  }
+
+  _insert(root, node) {
+    if (root === null) {
+      return node;
+    } else if (node.data < root.data) {
+      root.left = this._insert(root.left, node);
+      return root;
+    } else if (node.data > root.data) {
+      root.right = this._insert(root.right, node);
+      return root;
+    }
+
+    return root;
+  }
+}
+
+const tree = new Tree(5);
+tree.add(3);
+tree.add(7);
+tree.add(1);
+tree.add(4);
+tree.add(2);
+tree.add(9);
+console.log(tree);
+
+```
+
+위의 실행결과는 아래와 같습니다.
+
+![](../../.gitbook/assets/image%20%288%29.png)
+
+위의 내용을 그림으로 표현하면 아래의 그림과 같이 됩니다.
+
+![](../../.gitbook/assets/image%20%289%29.png)
+
 
 
