@@ -20,6 +20,20 @@ class Node {
   }
 }
 
+const _insert = (root, node) => {
+  if (root === null) {
+    return node;
+  } else if (node.data < root.data) {
+    root.left = _insert(root.left, node);
+    return root;
+  } else if (node.data > root.data) {
+    root.right = _insert(root.right, node);
+    return root;
+  }
+
+  return root;
+};
+
 class Tree {
   constructor(data) {
     if (data) {
@@ -27,35 +41,21 @@ class Tree {
     } else {
       this.root = null;
     }
+  }
 
-    const _insert = (root, node) => {
-      if (root === null) {
-        return node;
-      } else if (node.data < root.data) {
-        root.left = _insert(root.left, node);
-        return root;
-      } else if (node.data > root.data) {
-        root.right = _insert(root.right, node);
-        return root;
-      }
+  add(data) {
+    const node = new Node(data);
 
-      return root;
-    };
+    if (this.root === null) {
+      this.root = node;
+      return;
+    }
 
-    this.add = (data) => {
-      const node = new Node(data);
-
-      if (this.root === null) {
-        this.root = node;
-        return;
-      }
-
-      if (node.data < this.root.data) {
-        this.root.left = _insert(this.root.left, node);
-      } else {
-        this.root.right = _insert(this.root.right, node);
-      }
-    };
+    if (node.data < this.root.data) {
+      this.root.left = _insert(this.root.left, node);
+    } else {
+      this.root.right = _insert(this.root.right, node);
+    }
   }
 }
 
@@ -69,10 +69,6 @@ tree.add(9);
 console.log(tree);
 
 ```
-
-위의 실행결과는 아래와 같습니다.
-
-![](../../.gitbook/assets/image%20%288%29.png)
 
 위의 내용을 그림으로 표현하면 아래의 그림과 같이 됩니다.
 
