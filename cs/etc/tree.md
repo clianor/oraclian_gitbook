@@ -27,35 +27,35 @@ class Tree {
     } else {
       this.root = null;
     }
-  }
 
-  add(data) {
-    const node = new Node(data);
+    const _insert = (root, node) => {
+      if (root === null) {
+        return node;
+      } else if (node.data < root.data) {
+        root.left = _insert(root.left, node);
+        return root;
+      } else if (node.data > root.data) {
+        root.right = _insert(root.right, node);
+        return root;
+      }
 
-    if (this.root === null) {
-      this.root = node;
-      return;
-    }
-
-    if (node.data < this.root.data) {
-      this.root.left = this._insert(this.root.left, node);
-    } else {
-      this.root.right = this._insert(this.root.right, node);
-    }
-  }
-
-  _insert(root, node) {
-    if (root === null) {
-      return node;
-    } else if (node.data < root.data) {
-      root.left = this._insert(root.left, node);
       return root;
-    } else if (node.data > root.data) {
-      root.right = this._insert(root.right, node);
-      return root;
-    }
+    };
 
-    return root;
+    this.add = (data) => {
+      const node = new Node(data);
+
+      if (this.root === null) {
+        this.root = node;
+        return;
+      }
+
+      if (node.data < this.root.data) {
+        this.root.left = _insert(this.root.left, node);
+      } else {
+        this.root.right = _insert(this.root.right, node);
+      }
+    };
   }
 }
 
@@ -76,7 +76,7 @@ console.log(tree);
 
 위의 내용을 그림으로 표현하면 아래의 그림과 같이 됩니다.
 
-![](../../.gitbook/assets/image%20%289%29.png)
+![](../../.gitbook/assets/image%20%2810%29.png)
 
 
 
