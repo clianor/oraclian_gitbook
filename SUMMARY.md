@@ -47,6 +47,8 @@
 
 * [Network](cs/network/README.md)
   * [OSI 7계층](cs/network/osi-7.md)
+* [기타](cs/etc/README.md)
+  * [OOP\(Object Oriented Programming\)](cs/etc/oop-object-oriented-programming.md)
 
 ## INTERVIEW
 
@@ -59,5 +61,4 @@
   * [SOAP와 REST](interview/web/soap-rest.md)
 * [기타](interview/etc/README.md)
   * [빅오 표기법](interview/etc/big-o.md)
-  * [OOP\(Object Oriented Programming\)](interview/etc/oop-object-oriented-programming.md)
 
