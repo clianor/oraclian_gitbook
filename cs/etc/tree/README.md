@@ -72,7 +72,7 @@ console.log(tree);
 
 위의 내용을 그림으로 표현하면 아래의 그림과 같이 됩니다.
 
-![](../../../.gitbook/assets/image%20%2811%29.png)
+![](../../../.gitbook/assets/image%20%2812%29.png)
 
 
 

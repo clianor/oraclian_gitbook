@@ -77,5 +77,7 @@ console.log(tree.DFS());
 // result: [ 5, 3, 1, 2, 4, 7, 9]
 ```
 
+![](../../../.gitbook/assets/image%20%2810%29.png)
+
 
 
