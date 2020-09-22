@@ -41,6 +41,8 @@
   * [Custom Hook](javascript/react/custom-hook/README.md)
     * [useInput](javascript/react/custom-hook/useinput.md)
     * [useTabs](javascript/react/custom-hook/usetabs.md)
+    * [useTitle](javascript/react/custom-hook/usetitle.md)
+    * [useClick](javascript/react/custom-hook/useclick.md)
 * [NextJS](javascript/nextjs/README.md)
   * [NextJS - 기본구조](javascript/nextjs/nextjs.md)
 * [Setting](javascript/webpack/README.md)
