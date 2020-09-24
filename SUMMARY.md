@@ -43,6 +43,8 @@
     * [useTabs](javascript/react/custom-hook/usetabs.md)
     * [useTitle](javascript/react/custom-hook/usetitle.md)
     * [useClick](javascript/react/custom-hook/useclick.md)
+    * [useConfirm](javascript/react/custom-hook/useconfirm.md)
+    * [usePreventLeave](javascript/react/custom-hook/usepreventleave.md)
 * [NextJS](javascript/nextjs/README.md)
   * [NextJS - 기본구조](javascript/nextjs/nextjs.md)
 * [Setting](javascript/webpack/README.md)
