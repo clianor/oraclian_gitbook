@@ -45,6 +45,8 @@
     * [useClick](javascript/react/custom-hook/useclick.md)
     * [useConfirm](javascript/react/custom-hook/useconfirm.md)
     * [usePreventLeave](javascript/react/custom-hook/usepreventleave.md)
+    * [useBeforeLeave](javascript/react/custom-hook/usebeforeleave.md)
+    * [useFadeIn](javascript/react/custom-hook/usefadein.md)
 * [NextJS](javascript/nextjs/README.md)
   * [NextJS - 기본구조](javascript/nextjs/nextjs.md)
 * [Setting](javascript/webpack/README.md)
