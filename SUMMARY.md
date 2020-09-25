@@ -49,6 +49,7 @@
     * [useFadeIn](javascript/react/custom-hook/usefadein.md)
     * [useNetwork](javascript/react/custom-hook/usenetwork.md)
     * [useScroll](javascript/react/custom-hook/usescroll.md)
+    * [usePercentage](javascript/react/custom-hook/usepercentage.md)
 * [NextJS](javascript/nextjs/README.md)
   * [NextJS - 기본구조](javascript/nextjs/nextjs.md)
 * [Setting](javascript/webpack/README.md)
