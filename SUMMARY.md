@@ -40,6 +40,7 @@
     * [요즘 개발 이야기, 함수형 프로그래밍 정의](javascript/es5/undefined/undefined-2.md)
   * [함수형으로 전환하기](javascript/es5/undefined-1/README.md)
     * [회원목록, map, filter](javascript/es5/undefined-1/map-filter.md)
+    * [each](javascript/es5/undefined-1/each.md)
 * [React](javascript/react/README.md)
   * [Hook](javascript/react/hook/README.md)
     * [useState](javascript/react/hook/usestate.md)
