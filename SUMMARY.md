@@ -42,6 +42,7 @@
     * [회원목록, map, filter](javascript/es5/undefined-1/map-filter.md)
     * [each](javascript/es5/undefined-1/each.md)
     * [다형성](javascript/es5/undefined-1/undefined.md)
+    * [커링, curry, curryr](javascript/es5/undefined-1/curry-curryr.md)
 * [React](javascript/react/README.md)
   * [Hook](javascript/react/hook/README.md)
     * [useState](javascript/react/hook/usestate.md)
