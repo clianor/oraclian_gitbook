@@ -94,7 +94,7 @@ console.log(_get(users[10], 'name')); //undefined
 \_get도 커리를 이용할 수 있습니다.
 
 ```javascript
-var  _get = _curryr(function(obj, key) {
+var _get = _curryr(function(obj, key) {
   return obj == null ? undefined : obj[key];
 });
 var users = [{name : '1ilsang', value : 5}, {name : '2ilsang', value : 15}];
