@@ -44,7 +44,7 @@
     * [다형성](javascript/es5/undefined-1/undefined.md)
     * [커링, curry, curryr](javascript/es5/undefined-1/curry-curryr.md)
     * [reduce](javascript/es5/undefined-1/reduce.md)
-    * [파이프라인, \_go, \_pipe, 화살표 함수](javascript/es5/undefined-1/_go-_pipe.md)
+    * [파이프라인, \_go, \_pipe](javascript/es5/undefined-1/_go-_pipe.md)
 * [React](javascript/react/README.md)
   * [Hook](javascript/react/hook/README.md)
     * [useState](javascript/react/hook/usestate.md)
