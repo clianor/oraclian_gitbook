@@ -97,7 +97,7 @@ module.exports = {
 }
 ```
 
-### 6. html-loader 및 html-webpack-html 추가
+### 6. html-loader 및 html-webpack-plugin 추가
 
 ```javascript
 // webpack.config.js
